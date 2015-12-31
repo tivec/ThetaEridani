@@ -16,15 +16,18 @@ public class ShipMovement : RobotArmsComponent {
     public float facing;
     // TODO: Temporary until RCS and such are defined
     public float rotationSpeed;
+    // how fast can it bank, also temporary
+    public float bankSpeed;
 
     // The ship's bank
     public float bank;
     // how much the ship can bank
     public float maxBank;
+    
 
     // TODO: Temporary until thruster arrays are set for the ship
     public float thrustForce;
     public float currentThrust;
     public float currentRotation;
-
+    
 }

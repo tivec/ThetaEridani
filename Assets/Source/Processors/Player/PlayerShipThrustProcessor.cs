@@ -3,7 +3,7 @@ using System.Collections;
 using RobotArms;
 
 
-public class PlayerShipMovementProcessor : RobotArmsProcessor<PlayerInput, ShipMovement> {
+public class PlayerShipThrustProcessor : RobotArmsProcessor<PlayerInput, ShipMovement> {
     public override void Process(GameObject entity, PlayerInput input, ShipMovement movement)
     {
         // used for fuel calculations and other things
