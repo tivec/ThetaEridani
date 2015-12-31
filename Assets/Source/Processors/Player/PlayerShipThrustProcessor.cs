@@ -12,10 +12,21 @@ public class PlayerShipThrustProcessor : RobotArmsProcessor<PlayerInput, ShipMov
         // forward thrust
         if (input.thrust > 0)
         {
-            movement.velocity += entity.transform.up * movement.thrustForce * Time.deltaTime;
+            movement.velocity += entity.transform.up * (movement.thrustForce *input.thrust) * Time.deltaTime;
             movement.velocity = Vector3.ClampMagnitude(movement.velocity, movement.maxMagnitude);
             movement.velocity.z = 0;
             movement.magnitude = movement.velocity.magnitude;
+        }
+
+        // this is full stop, we're breaking!
+        if (input.thrustRaw == -1)
+        {
+            var opposite = -movement.velocity;
+            movement.velocity += opposite.normalized * movement.thrustForce * Time.deltaTime;
+            if (movement.velocity.sqrMagnitude < 0.005)
+            {
+                movement.velocity = Vector3.zero;
+            }
         }
     }
 }
